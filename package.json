@@ -1,0 +1,28 @@
+{
+  "name": "san-diego-parking-meters",
+  "version": "1.0.0",
+  "description": "Finds San Diego Parking Meters and Info",
+  "main": "server/index.js",
+  "scripts": {
+    "build": "npm run less && webpack",
+    "start": "npm run build && node server/index.js",
+    "less": "lessc src/css/style.less dist/css/style.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-react": "^6.24.1",
+    "express": "^4.16.3",
+    "google-maps-react": "^2.0.2",
+    "less": "^3.8.1",
+    "morgan": "^1.9.0",
+    "path": "^0.12.7",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0"
+  }
+}

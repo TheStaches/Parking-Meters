@@ -1,0 +1,41 @@
+import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import React from "react";
+ 
+export class MapContainer extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      showingInfoWindow: false,
+      activeMarker: {},
+      selectedPlace: {}
+    };
+  }
+  render() {
+    return (
+        <Map 
+          initialCenter={{
+            lat: 32.7157,
+            lng: -117.1611
+          }} 
+          google={this.props.google} 
+          zoom={12}>
+
+          { 
+            this.props.meters.map((meter, index, metersObj) => {
+              // After taking duplicate street names out. Create a count of how many meters are at that adress.
+              if (index > 0) {
+                if (metersObj[index].sub_area !== metersObj[index - 1].sub_area) {
+                  return (
+                    <Marker position={{lat: meter.latitude, lng: meter.longitude}} />
+                  )
+                }
+              }
+            })
+          }
+        </Map>
+    );
+  }
+}
+export default GoogleApiWrapper({
+  apiKey: "AIzaSyCxL6MLgzC2g3pdPVAkoL76t_qJJEz68Kc"
+})(MapContainer)
