@@ -7,9 +7,14 @@ export class MapContainer extends React.Component {
     this.state = {
       showingInfoWindow: false,
       activeMarker: {},
-      selectedPlace: {}
+      selectedPlace: {},
     };
   }
+
+  onMarkerClick(props, marker, e) {
+    console.log(props.name);
+  }
+
   render() {
     return (
         <Map 
@@ -18,15 +23,19 @@ export class MapContainer extends React.Component {
             lng: -117.1611
           }} 
           google={this.props.google} 
-          zoom={12}>
-
+          zoom={12}
+          onClick={this.mapClicked}>
           { 
             this.props.meters.map((meter, index, metersObj) => {
               // After taking duplicate street names out. Create a count of how many meters are at that adress.
               if (index > 0) {
                 if (metersObj[index].sub_area !== metersObj[index - 1].sub_area) {
                   return (
-                    <Marker position={{lat: meter.latitude, lng: meter.longitude}} />
+                    <Marker 
+                      position={{lat: meter.latitude, lng: meter.longitude}} 
+                      onClick={this.onMarkerClick} 
+                      name={(meter.sub_area + "/" + meter.pole)} 
+                      key={(meter.sub_area + "/" + meter.pole)} />
                   )
                 }
               }

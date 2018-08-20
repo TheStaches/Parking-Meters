@@ -1,6 +1,9 @@
 import React from "react";
 import MapContainer from "./MapContainer";
+import MeterCard from "./MeterCard"
+import Input from "./Input"
 import jsonData from "../server/data.json"
+import InfoCard from "./InfoCard"
 
 
 
@@ -8,47 +11,76 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      meters: jsonData
+      meters: jsonData,
+      input: "",
+      selected: "",
+      info: false
     }
+
+    this.updateInput = this.updateInput.bind(this)
+  }
+
+  // Puts input box value into state
+  updateInput(value) {
+    this.setState({
+      input: value  
+    })
+  }
+
+  updateSelected(value) {
+    this.setState({
+      selected: value
+    })
+  }
+
+  updateInfo() {
+    this.setState({
+      info: !info
+    }) 
   }
 
   render() {
     return (
       <div className="container-fluid">
         <div className="row">
+
           {/* Map */}
           <div className="map col-10">
             <MapContainer meters={this.state.meters} />
-            <div className="input-group mb-3">
-              <input type="text" className="form-control" placeholder="Enter Your Destination" />
-                <div className="input-group-app pend">
-                  <button className="btn btn-danger"><i className="fas fa-search" /></button>
-                </div>
-            </div>
+            
+            {/* Input */}
+            <Input value={this.state.input} updateInput={this.updateInput} />
+
           </div>
 
-            {/* Meter Column */}
-            <div className="col-2 card">
-              <div className="card-header shadow bg-white rounded col__header">Closest Meters</div>
 
-              {/* Individual Meters */}
-              <div className="card meter__card shadow bg-white rounded">
-                <div className="card-header meter__header">
-                  <p>2900 AVENIDA DE PORTUGAL</p>
-                </div>
-                <div className="card-body">
-                  <p>Cost and Current Distance to Destination</p>
-                </div>
-                <div className="card-footer">
-                  <p>Not Sure What Should Go Here</p>
-                </div>
-              </div>
-              <div className="card meter__card shadow bg-white rounded">
-                <div className="card-header meter__header">900 B ST</div>
-                <div className="card-body">Cost and Current Distance to Destination</div>
-                <div className="card-footer">Not Sure What Should Go Here</div>
-              </div>
-            </div>
+            {/* Column Meters */}
+            {
+              (true) ? 
+                 <InfoCard
+                    subArea={this.state.meters[0].sub_area}
+                    area={this.state.meters[0].area}
+                    configName={this.state.meters[0].config_name} />
+                :                 
+                (
+                  <div className="col-2 card col__card">
+                    <div className="card-header shadow col__header">Meters</div>
+                    { this.state.meters.map((meter, index, metersObj) => {
+                      if (index > 0) {
+                        if (metersObj[index].sub_area !== metersObj[index - 1].sub_area) {
+                          return (
+                          <MeterCard 
+                            subArea={meter.sub_area}
+                            configName={meter.config_name}
+                            key={(meter.sub_area + "/" + meter.pole)} />
+                          )
+                        } 
+                      }
+                    })
+                    }
+                  </div>
+                )
+              }
         </div>
       </div>
     )

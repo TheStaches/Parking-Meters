@@ -33533,26 +33533,6 @@
     "zone": "Uptown",
     "area": "Bankers Hill",
     "sub_area": "2200 FIFTH AVE",
-    "pole": "May-00",
-    "config_id": "10742",
-    "config_name": "15 Min Max $1.25 7am-7pm Daily",
-    "longitude": "-117.160365",
-    "latitude": "32.728445"
-  },
-  {
-    "zone": "Uptown",
-    "area": "Bankers Hill",
-    "sub_area": "2200 FIFTH AVE",
-    "pole": "May-02",
-    "config_id": "10742",
-    "config_name": "15 Min Max $1.25 7am-7pm Daily",
-    "longitude": "-117.160366",
-    "latitude": "32.728579"
-  },
-  {
-    "zone": "Uptown",
-    "area": "Bankers Hill",
-    "sub_area": "2200 FIFTH AVE",
     "pole": "May-10",
     "config_id": "9000",
     "config_name": "2 Hour Max $1.25 HR 8am-6pm Mon-Sat",
@@ -42752,7 +42732,7 @@
   {
     "zone": "Uptown",
     "area": "Hillcrest",
-    "sub_area": "100 UNIVERSITY AVE",
+    "sub_area": "1200 UNIVERSITY AVE",
     "pole": "UV-124",
     "config_id": "13442",
     "config_name": "2 Hour Max $1.25 HR 10am-8pm Mon-Sat (Mobile Pay)",
