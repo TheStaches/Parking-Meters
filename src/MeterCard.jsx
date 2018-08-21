@@ -9,7 +9,7 @@ class MeterCard extends React.Component {
       hours: "",
       payment: false,
     }
-
+    this.setSelected = this.setSelected.bind(this);
   }
 
   componentDidMount() {
@@ -50,13 +50,17 @@ class MeterCard extends React.Component {
     })
   }
 
+  setSelected() {
+    this.props.updateSelected(this.props.index)
+  }
+
   render() {
     return (
-        <div className="card meter__card shadow rounded">
+        <div className="card meter__card shadow" onClick={this.setSelected}>
           
           {/* Header */}
           <div className="card-header meter__header">
-            <div><p>{this.props.subArea}</p></div>
+            <p>{this.props.subArea}</p>
           </div>
 
           {/* Body */}
@@ -67,7 +71,7 @@ class MeterCard extends React.Component {
 
           {/* Footer */}
           <div className="card-footer">
-            <p>{this.state.price}</p>
+            <p>MeterCard  {this.props.index}</p>
           </div>
         </div>
     )

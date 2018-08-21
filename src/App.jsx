@@ -13,11 +13,11 @@ class App extends React.Component {
     this.state = {
       meters: jsonData,
       input: "",
-      selected: "",
-      info: false
+      selected: 0,
     }
 
     this.updateInput = this.updateInput.bind(this)
+    this.updateSelected = this.updateSelected.bind(this)
   }
 
   // Puts input box value into state
@@ -26,17 +26,11 @@ class App extends React.Component {
       input: value  
     })
   }
-
+  // Converts selected card to InfoCard
   updateSelected(value) {
     this.setState({
       selected: value
     })
-  }
-
-  updateInfo() {
-    this.setState({
-      info: !info
-    }) 
   }
 
   render() {
@@ -52,35 +46,35 @@ class App extends React.Component {
             <Input value={this.state.input} updateInput={this.updateInput} />
 
           </div>
+          <div className="col-2 card col__card">
+            <div className="card-header shadow col__header">Meters</div>
 
 
             {/* Column Meters */}
-            {
-              (true) ? 
-                 <InfoCard
-                    subArea={this.state.meters[0].sub_area}
-                    area={this.state.meters[0].area}
-                    configName={this.state.meters[0].config_name} />
-                :                 
-                (
-                  <div className="col-2 card col__card">
-                    <div className="card-header shadow col__header">Meters</div>
-                    { this.state.meters.map((meter, index, metersObj) => {
-                      if (index > 0) {
-                        if (metersObj[index].sub_area !== metersObj[index - 1].sub_area) {
-                          return (
-                          <MeterCard 
-                            subArea={meter.sub_area}
-                            configName={meter.config_name}
-                            key={(meter.sub_area + "/" + meter.pole)} />
-                          )
-                        } 
-                      }
-                    })
-                    }
-                  </div>
-                )
-              }
+            { this.state.meters.map((meter, index, metersObj) => {
+              if (index > 0) {
+                if (metersObj[index].sub_area !== metersObj[index - 1].sub_area) {
+                  return (index === this.state.selected) ?
+                    <InfoCard
+                      subArea={meter.sub_area}
+                      area={meter.area}
+                      configName={meter.config_name}
+                      key={(meter.sub_area + "/" + meter.pole)}
+                      index={index}
+                      updateSelected={this.updateSelected} />
+                  :                 
+                    <MeterCard 
+                      subArea={meter.sub_area}
+                      area={meter.area}
+                      configName={meter.config_name}
+                      key={(meter.sub_area + "/" + meter.pole)}
+                      index={index}
+                      updateSelected={this.updateSelected} />
+                    } 
+                  }
+              })
+            }
+          </div>
         </div>
       </div>
     )

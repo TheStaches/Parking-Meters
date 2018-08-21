@@ -6,13 +6,16 @@ export class MapContainer extends React.Component {
     super(props);
     this.state = {
       showingInfoWindow: false,
-      activeMarker: {},
+      activeMarker: "",
       selectedPlace: {},
     };
+    this.onMarkerClick = this.onMarkerClick.bind(this);
   }
 
   onMarkerClick(props, marker, e) {
-    console.log(props.name);
+    this.setState({
+      activeMarker: props.name
+    })
   }
 
   render() {
@@ -32,7 +35,8 @@ export class MapContainer extends React.Component {
                 if (metersObj[index].sub_area !== metersObj[index - 1].sub_area) {
                   return (
                     <Marker 
-                      position={{lat: meter.latitude, lng: meter.longitude}} 
+                      position={{lat: meter.latitude, lng: meter.longitude}}
+                      icon={(this.state.activeMarker === (meter.sub_area + "/" + meter.pole)) ? "https://cdn3.iconfinder.com/data/icons/mapicons/icons/suv.png" : ""}
                       onClick={this.onMarkerClick} 
                       name={(meter.sub_area + "/" + meter.pole)} 
                       key={(meter.sub_area + "/" + meter.pole)} />
