@@ -51,7 +51,7 @@ class MeterCard extends React.Component {
   }
 
   setSelected() {
-    this.props.updateSelected(this.props.index)
+    this.props.updateSelected(this.props.name)
   }
 
   render() {

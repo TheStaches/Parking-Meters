@@ -1,0 +1,22 @@
+[
+  {
+    "zone": "City",
+    "area": "Mission Hills",
+    "sub_area": "3800 PACIFIC HIGHWAY",
+    "pole": "P-3801",
+    "config_id": "9000",
+    "config_name": "2 Hour Max $1.25 HR 8am-6pm Mon-Sat",
+    "longitude": "-117.18608",
+    "latitude": "32.74137"
+  },
+  {
+    "zone": "City",
+    "area": "Mission Hills",
+    "sub_area": "3400 SUTHERLAND ST",
+    "pole": "SU-3409",
+    "config_id": "9000",
+    "config_name": "2 Hour Max $1.25 HR 8am-6pm Mon-Sat",
+    "longitude": "-117.186253",
+    "latitude": "32.741676"
+  }
+]

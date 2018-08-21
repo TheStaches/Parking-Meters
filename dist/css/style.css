@@ -7,9 +7,12 @@
 .row {
   height: 100vh;
 }
+.card {
+  margin-left: 15px;
+}
 .info__card {
   margin: 5px -15px 5px -5px;
-  border: 1px solid black;
+  border: 3px solid black;
   min-height: 200px;
 }
 .info__header {
@@ -36,8 +39,10 @@
 }
 .meter__card {
   margin: 5px -15px 5px -5px;
-  border: 1px solid black;
   min-height: 200px;
+}
+.meter__card:hover {
+  border: 1px solid black;
 }
 .meter__header {
   text-align: right;
