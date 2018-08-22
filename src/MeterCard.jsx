@@ -61,6 +61,7 @@ class MeterCard extends React.Component {
           {/* Header */}
           <div className="card-header meter__header">
             <p>{this.props.subArea}</p>
+            <p>{this.props.area}</p>
           </div>
 
           {/* Body */}
@@ -71,7 +72,7 @@ class MeterCard extends React.Component {
 
           {/* Footer */}
           <div className="card-footer">
-            <p>MeterCard  {this.props.index}</p>
+            <p>MeterCard</p>
           </div>
         </div>
     )

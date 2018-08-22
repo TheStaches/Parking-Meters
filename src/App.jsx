@@ -77,28 +77,6 @@ class App extends React.Component {
                   }
               })
             }
-            {/* {
-              this.state.meters.map((meter, index, metersObj) => {
-                return (this.state.selected === (meter.sub_area + "/" + meter.pole)) ?
-                    <InfoCard
-                      subArea={meter.sub_area}
-                      area={meter.area}
-                      configName={meter.config_name}
-                      key={(meter.sub_area + "/" + meter.pole)}
-                      name={(meter.sub_area + "/" + meter.pole)}
-                      index={index}
-                      updateSelected={this.updateSelected} />
-                  :                 
-                    <MeterCard 
-                      subArea={meter.sub_area}
-                      area={meter.area}
-                      configName={meter.config_name}
-                      key={(meter.sub_area + "/" + meter.pole)}
-                      name={(meter.sub_area + "/" + meter.pole)}
-                      index={index}
-                      updateSelected={this.updateSelected} />
-                })
-              } */}
           </div>
         </div>
       </div>

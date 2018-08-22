@@ -14,7 +14,6 @@ export class MapContainer extends React.Component {
   }
   
   onMarkerClick(props, marker, e) {
-    console.log(props.name)
     this.props.updateSelected(props.name)
   }
 
@@ -45,18 +44,6 @@ export class MapContainer extends React.Component {
               }
             })
           }
-          {/* {
-            this.props.meters.map((meter, index, metersObj) => {
-              return (
-                <Marker 
-                  position={{lat: meter.latitude, lng: meter.longitude}}
-                  icon={(this.props.selected === (meter.sub_area + "/" + meter.pole)) ? "http://maps.google.com/mapfiles/ms/icons/blue-dot.png" : "http://maps.google.com/mapfiles/ms/icons/red-dot.png"}
-                  onClick={this.onMarkerClick} 
-                  name={(meter.sub_area + "/" + meter.pole)} 
-                  key={(meter.sub_area + "/" + meter.pole)} />
-              )
-            })
-          } */}
         </Map>
     );
   }
