@@ -2,9 +2,9 @@ import React from "react";
 import MapContainer from "./MapContainer";
 import MeterCard from "./MeterCard"
 import Input from "./Input"
-import jsonData from "../server/testdata.json"
+import jsonData from "../server/data.json"
 import InfoCard from "./InfoCard"
-
+import scrollToComponent from "react-scroll-to-component";
 
 
 class App extends React.Component {
@@ -15,12 +15,11 @@ class App extends React.Component {
       input: "",
       selected: "",
     }
-
-    let name = (this.state.meters.sub_area + "/" + this.state.meters.pole);
+    
     this.updateInput = this.updateInput.bind(this)
     this.updateSelected = this.updateSelected.bind(this)
   }
-
+  
   // Puts input box value into state
   updateInput(value) {
     this.setState({
@@ -41,10 +40,10 @@ class App extends React.Component {
 
           {/* Map */}
           <div className="map col-10">
-            <MapContainer meters={this.state.meters} selected={this.state.selected} updateSelected={this.updateSelected}/>
+            <MapContainer meters={this.state.meters} selected={this.state.selected} updateSelected={this.updateSelected} scroll={this.scroll}/>
             
             {/* Input */}
-            <Input value={this.state.input} updateInput={this.updateInput} />
+            {/* <Input value={this.state.input} updateInput={this.updateInput} /> */}
 
           </div>
           <div className="col-2 card col__card">
@@ -52,9 +51,10 @@ class App extends React.Component {
 
 
             {/* Column Meters */}
-            {/* { this.state.meters.map((meter, index, metersObj) => {
+            { this.state.meters.map((meter, index, metersObj) => {
               if (index > 0) {
                 if (metersObj[index].sub_area !== metersObj[index - 1].sub_area) {
+                  let nameKey = (meter.sub_area + "/" + meter.pole);
                   return (this.state.selected === (meter.sub_area + "/" + meter.pole)) ?
                     <InfoCard
                       subArea={meter.sub_area}
@@ -76,8 +76,8 @@ class App extends React.Component {
                     } 
                   }
               })
-            } */}
-            {
+            }
+            {/* {
               this.state.meters.map((meter, index, metersObj) => {
                 return (this.state.selected === (meter.sub_area + "/" + meter.pole)) ?
                     <InfoCard
@@ -97,8 +97,8 @@ class App extends React.Component {
                       name={(meter.sub_area + "/" + meter.pole)}
                       index={index}
                       updateSelected={this.updateSelected} />
-            })
-          }
+                })
+              } */}
           </div>
         </div>
       </div>

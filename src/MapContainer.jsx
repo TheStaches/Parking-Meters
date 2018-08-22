@@ -28,7 +28,7 @@ export class MapContainer extends React.Component {
           google={this.props.google} 
           zoom={12}
           onClick={this.mapClicked}>
-          {/* { 
+          { 
             this.props.meters.map((meter, index, metersObj) => {
               // After taking duplicate street names out. Create a count of how many meters are at that adress.
               if (index > 0) {
@@ -36,7 +36,7 @@ export class MapContainer extends React.Component {
                   return (
                     <Marker 
                       position={{lat: meter.latitude, lng: meter.longitude}}
-                      icon={ (this.state.activeMarker === (meter.sub_area + "/" + meter.pole)) ? "http://maps.google.com/mapfiles/ms/icons/blue-dot.png" : "http://maps.google.com/mapfiles/ms/icons/red-dot.png"}
+                      icon={ (this.props.selected === (meter.sub_area + "/" + meter.pole)) ? "http://maps.google.com/mapfiles/ms/icons/blue-dot.png" : "http://maps.google.com/mapfiles/ms/icons/red-dot.png"}
                       onClick={this.onMarkerClick} 
                       name={(meter.sub_area + "/" + meter.pole)} 
                       key={(meter.sub_area + "/" + meter.pole)} />
@@ -44,8 +44,8 @@ export class MapContainer extends React.Component {
                 }
               }
             })
-          } */}
-          {
+          }
+          {/* {
             this.props.meters.map((meter, index, metersObj) => {
               return (
                 <Marker 
@@ -55,8 +55,8 @@ export class MapContainer extends React.Component {
                   name={(meter.sub_area + "/" + meter.pole)} 
                   key={(meter.sub_area + "/" + meter.pole)} />
               )
-          })
-        }
+            })
+          } */}
         </Map>
     );
   }
