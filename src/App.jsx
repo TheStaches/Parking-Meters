@@ -4,7 +4,6 @@ import MeterCard from "./MeterCard"
 import Input from "./Input"
 import jsonData from "../server/data.json"
 import InfoCard from "./InfoCard"
-import scrollToComponent from "react-scroll-to-component";
 
 
 class App extends React.Component {
